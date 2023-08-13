@@ -1,0 +1,13 @@
+# env
+.env
+
+# node_modules
+node_modules
+
+# temp
+/temp
+
+# tests
+__tests__
+
+# misc
