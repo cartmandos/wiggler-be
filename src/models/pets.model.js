@@ -60,16 +60,7 @@ module.exports = (sequelize) => {
       },
       color: {
         type: DataTypes.ENUM,
-        values: [
-          'brown',
-          'black',
-          'white',
-          'grey',
-          'orange',
-          'red',
-          'golden',
-          'tuxedo',
-        ],
+        values: ['brown', 'black', 'white', 'grey', 'orange', 'red', 'golden', 'tuxedo'],
         allowNull: false,
         set(value) {
           this.setDataValue('color', value.toLowerCase());

@@ -15,12 +15,7 @@ function UserService() {
     'updatedAt',
   ];
   const excludedFields = ['password', 'roleId'];
-  const petExcludedFields = [
-    'publisherId',
-    'isPublished',
-    'createdAt',
-    'updatedAt',
-  ];
+  const petExcludedFields = ['publisherId', 'isPublished', 'createdAt', 'updatedAt'];
 
   const validateUserId = (id) => {
     const schema = Joi.string().uuid();
@@ -50,7 +45,10 @@ function UserService() {
       password: Joi.string().min(6).max(255),
       firstName: Joi.string().min(2).max(255), // only letters and hyphens = /^[a-zA-Z-]+$/i or /^[a-z-]+$/i
       lastName: Joi.string().min(2).max(255),
-      phoneNumber: Joi.string().pattern(/^\+[0-9]+$/).min(11).max(16),
+      phoneNumber: Joi.string()
+        .pattern(/^\+[0-9]+$/)
+        .min(11)
+        .max(16),
       description: Joi.string(),
     });
     const { error } = schema.validate(payload);
@@ -155,10 +153,7 @@ function UserService() {
         return acc;
       }, {});
 
-      if (
-        Object.keys(updatedData).length === 0 &&
-        Object.keys(payload).length > 0
-      ) {
+      if (Object.keys(updatedData).length === 0 && Object.keys(payload).length > 0) {
         console.log('Thrower: update');
         throw new AppError('Invalid data', 422, {
           // fields: Object.keys(payload),

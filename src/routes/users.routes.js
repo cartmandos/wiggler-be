@@ -1,18 +1,11 @@
 const usersRouter = require('express').Router();
 const { usersController: users } = require('../controllers');
-const {
-  auth,
-  handleMeParam,
-  checkPermissions,
-} = require('../middleware/auth.middleware');
+const { auth, handleMeParam, checkPermissions } = require('../middleware/auth.middleware');
 const { queryStringHandler } = require('../middleware/query-string-handler');
 
 usersRouter.use(auth);
 
-usersRouter
-  .route('/')
-  .get([checkPermissions, queryStringHandler], users.getAllUsers);
-
+usersRouter.route('/').get([checkPermissions, queryStringHandler], users.getAllUsers);
 
 usersRouter
   .route('/:id')
@@ -21,9 +14,7 @@ usersRouter
   .delete(users.deleteUser)
   .put(users.editUser);
 
-usersRouter
-  .route('/:id/profile')
-  .get([handleMeParam, checkPermissions], users.getProfile);
+usersRouter.route('/:id/profile').get([handleMeParam, checkPermissions], users.getProfile);
 
 usersRouter
   .route('/:id/saved-pets')
@@ -37,9 +28,6 @@ usersRouter
 
 usersRouter
   .route('/:id/adoptions')
-  .get(
-    [handleMeParam,checkPermissions, queryStringHandler],
-    users.getAdoptions
-  );
+  .get([handleMeParam, checkPermissions, queryStringHandler], users.getAdoptions);
 
 module.exports = usersRouter;

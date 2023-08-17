@@ -6,11 +6,7 @@ const {
 } = require('../middleware/users.middleware');
 const { authController: auth } = require('../controllers');
 
-authRouter.post(
-  '/register',
-  [isUserAlreadyExist, isPasswordMatch],
-  auth.register
-);
+authRouter.post('/register', [isUserAlreadyExist, isPasswordMatch], auth.register);
 
 authRouter.post('/login', isEmailExist, auth.login);
 

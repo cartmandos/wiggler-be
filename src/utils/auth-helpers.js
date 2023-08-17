@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { jwtConfig: { secret, expiresIn } } = require('../config').authConfig;
+const {
+  jwtConfig: { secret, expiresIn },
+} = require('../config').authConfig;
 const { AppError } = require('../errors');
 
 async function hashPassword(password) {
@@ -50,9 +52,7 @@ function verifyToken(token) {
 }
 
 function getToken(req, signed = true) {
-  const token = signed
-    ? req.signedCookies.access_token
-    : req.cookies.access_token;
+  const token = signed ? req.signedCookies.access_token : req.cookies.access_token;
   if (!token) {
     throw new AppError('Please login.');
   }

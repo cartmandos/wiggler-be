@@ -1,4 +1,4 @@
-const {AppError} = require('../errors');
+const { AppError } = require('../errors');
 const { NOT_FOUND, NO_CONTENT } = require('../utils/http-status');
 const { UserService } = require('../services');
 const { paginationBuilder } = require('../utils/service-helpers');
@@ -7,11 +7,7 @@ async function getAllUsers(req, res, next) {
   try {
     const queryParams = req.queryParams;
     const users = await UserService.findAll(queryParams);
-    const pagination = paginationBuilder(
-      users,
-      queryParams,
-      req.originalUrl.split('?')[0]
-    );
+    const pagination = paginationBuilder(users, queryParams, req.originalUrl.split('?')[0]);
 
     res.send({
       users: users.rows,

@@ -1,4 +1,4 @@
-const {AppError} = require('../errors');
+const { AppError } = require('../errors');
 const { NOT_FOUND, CREATED, NO_CONTENT } = require('../utils/http-status');
 const { PetService, AdoptionService } = require('../services');
 const { paginationBuilder } = require('../utils/service-helpers');
@@ -10,11 +10,7 @@ async function getAllPets(req, res, next) {
     res.send({
       message: 'Pets retrieved successfully',
       pets: pets.rows,
-      pagination: paginationBuilder(
-        pets,
-        queryParams,
-        req.originalUrl.split('?')[0]
-      ),
+      pagination: paginationBuilder(pets, queryParams, req.originalUrl.split('?')[0]),
     });
   } catch (error) {
     next(error);

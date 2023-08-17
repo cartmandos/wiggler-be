@@ -13,21 +13,10 @@ petsRouter.use(auth);
 
 petsRouter.route('/').all(isAdmin).post(pets.addPet).delete(pets.deleteAll);
 
-petsRouter
-  .route('/:petId')
-  .all(isAdmin)
-  .put(pets.editPet)
-  .delete(pets.deletePet);
+petsRouter.route('/:petId').all(isAdmin).put(pets.editPet).delete(pets.deletePet);
 
-petsRouter
-  .route('/:petId/adoptions')
-  .post(pets.adoptPet)
-  .delete(pets.returnPet);
+petsRouter.route('/:petId/adoptions').post(pets.adoptPet).delete(pets.returnPet);
 
-petsRouter.post(
-  '/:petId/upload',
-  handleUpload.single('pet_image'),
-  pets.addImage
-);
+petsRouter.post('/:petId/upload', handleUpload.single('pet_image'), pets.addImage);
 
 module.exports = petsRouter;

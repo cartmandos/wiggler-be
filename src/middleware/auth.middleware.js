@@ -1,7 +1,7 @@
 const authHelpers = require('../utils/auth-helpers');
 const permissions = require('../utils/policy');
 const HttpStatus = require('../utils/http-status');
-const {AppError} = require('../errors');
+const { AppError } = require('../errors');
 
 const auth = async (req, res, next) => {
   try {
@@ -36,13 +36,11 @@ const checkPermissions = (req, res, next) => {
     const { method, params, route } = req;
     const { role, uid } = res.locals.user;
 
-    const path =
-      params.id === uid ? route.path.replace('/:id', '/me') : route.path;
+    const path = params.id === uid ? route.path.replace('/:id', '/me') : route.path;
 
     const rolePermissions = permissions(role);
     const isAllowedPath = Object.keys(rolePermissions).includes(path);
-    const isAllowedMethod =
-      isAllowedPath && rolePermissions[path].includes(method);
+    const isAllowedMethod = isAllowedPath && rolePermissions[path].includes(method);
 
     if (!isAllowedPath || !isAllowedMethod) {
       throw new AppError('Access denied.', HttpStatus.FORBIDDEN);

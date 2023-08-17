@@ -21,11 +21,11 @@ module.exports = {
     'node/prefer-global/console': ['error', 'always'],
     'node/prefer-global/process': ['error', 'always'],
     'node/prefer-promises/fs': 'error',
-    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { afterColon: true }],
     'no-multi-spaces': 'error',
+    indent: ['warn', 2, { SwitchCase: 1 }],
     'no-unused-vars': 'warn',
   },
 };

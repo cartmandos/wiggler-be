@@ -8,8 +8,7 @@ Query String Formats:
 */
 
 const queryStringHandler = (req, res, next) => {
-  const { filter, fields, sort, direction, page, limit, size, ...searchTerms } =
-    req.query;
+  const { filter, fields, sort, direction, page, limit, size, ...searchTerms } = req.query;
   const filterBy = parseFilterParam(filter);
   const selectFields = parseFieldsParam(fields);
   const sortBy = parseSortParam(sort, direction);

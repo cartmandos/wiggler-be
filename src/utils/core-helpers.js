@@ -34,10 +34,7 @@ function requireAll(directory) {
 function camelCase(str) {
   const words = str.split(/[.-]/);
   const formattedWords = words.map((str, i) => {
-    return (
-      (i === 0 ? str.charAt(0).toLowerCase() : str.charAt(0).toUpperCase()) +
-      str.slice(1)
-    );
+    return (i === 0 ? str.charAt(0).toLowerCase() : str.charAt(0).toUpperCase()) + str.slice(1);
   });
 
   return formattedWords.join('');
@@ -53,7 +50,6 @@ const chalk = {
   yellow: (str) => `\x1b[33m${str}\x1b[0m`,
   inversed: (str) => `\x1b[7m${str}\x1b[0m`,
 };
-
 
 const helpers = { requireAll, camelCase, capitalize, chalk };
 

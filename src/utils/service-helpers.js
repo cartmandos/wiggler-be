@@ -3,8 +3,7 @@ function queryBuilder(queryParams, excludedFields, allowedFields) {
 
   function filterAttributes(fields) {
     return fields.filter(
-      (field) =>
-        allowedFields.includes(field) && !excludedFields.includes(field)
+      (field) => allowedFields.includes(field) && !excludedFields.includes(field)
     );
   }
 
@@ -29,8 +28,7 @@ function queryBuilder(queryParams, excludedFields, allowedFields) {
   }
 
   if (queryParams.pagination) {
-    queryParams.pagination.offset &&
-      (query.offset = queryParams.pagination.offset);
+    queryParams.pagination.offset && (query.offset = queryParams.pagination.offset);
     query.limit = queryParams.pagination.limit;
   }
 
@@ -40,8 +38,7 @@ function queryBuilder(queryParams, excludedFields, allowedFields) {
 function paginationBuilder(result, queryParams, pathname) {
   const pageCount = queryParams.pagination.limit;
   const totalCount = result.count;
-  const currentPage =
-    queryParams.pagination.offset / queryParams.pagination.limit + 1;
+  const currentPage = queryParams.pagination.offset / queryParams.pagination.limit + 1;
   const totalPages = Math.ceil(result.count / queryParams.pagination.limit);
   const isNextPage = currentPage < totalPages;
   const isPrevPage = currentPage > 1 && currentPage <= totalPages;

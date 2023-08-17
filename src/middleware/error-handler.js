@@ -24,7 +24,7 @@ const errorHandler = (options = { logging: false }) => {
       // exposing error details to response json
       // cause && (errors = logging ? cause : cause?.message.replace(/"/g, ''));
 
-      logging && handleInternalError(err);
+      // logging && handleInternalError(err);
       //errors = { code: code, message: HttpStatus.reason[code] };
     }
     const message =
@@ -41,12 +41,7 @@ const errorHandler = (options = { logging: false }) => {
       errors,
     });
 
-    logging &&
-      console.log(
-        'ERR',
-        `\x1b[33m${err.message}\x1b[0m`,
-        `\x1b[31m${err.name}\x1b[0m`
-      );
+    logging && console.log('ERR', `\x1b[33m${err.message}\x1b[0m`, `\x1b[31m${err.name}\x1b[0m`);
     //
     //logging && console.log('ERR', err);
     next();
@@ -58,12 +53,7 @@ const handleInternalError = (err) => {
   //console.log('ErrorId', errorId);
   if (err.cause && err.cause.name && err.cause.name.startsWith('Sequelize')) {
     //'SequelizeDatabaseError', 'SequelizeValidationError', 'SequelizeUniqueConstraintError'
-    console.log(
-      'DB ERR',
-      err.cause.message,
-      err.cause.parent.detail,
-      err.cause.name
-    );
+    console.log('DB ERR', err.cause.message, err.cause.parent.detail, err.cause.name);
   }
   if (err instanceof SyntaxError) {
     console.log('SYNTAXERROR', err.message);
@@ -72,7 +62,7 @@ const handleInternalError = (err) => {
     console.log('TYPEERROR', err.message);
   }
 
-  return isInternal;
+  // return isInternal;
 };
 
 module.exports = { errorHandler };

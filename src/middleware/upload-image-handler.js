@@ -18,10 +18,7 @@ const cloudStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(
-      null,
-      file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname)
-    );
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
   },
 });
 

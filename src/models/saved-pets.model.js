@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  
   class SavedPet extends Model {
     static associate(models) {
       models.User.belongsToMany(models.Pet, {
