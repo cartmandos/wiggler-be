@@ -12,7 +12,7 @@ authRouter.post(
   auth.register
 );
 
-authRouter.post('/login', [isPasswordMatch, isEmailExist], auth.login);
+authRouter.post('/login', isEmailExist, auth.login);
 
 authRouter.post('/logout', auth.logout);
 
