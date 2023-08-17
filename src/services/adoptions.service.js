@@ -6,7 +6,7 @@ function AdoptionService() {
     const newStatus = adoptionType === 'adoption' ? 'adopted' : 'fostered';
     const updatedRows = await Pet.update(
       { status: newStatus },
-      { where: { status: 'available', id: petId } }
+      { where: { status: 'Available', id: petId } }
     );
     if (updatedRows == 0) {
       throw new Error('Pet not found or not available.');
@@ -21,10 +21,7 @@ function AdoptionService() {
   }
 
   async function returnPet(petId, userId) {
-    const updatedRows = await Pet.update(
-      { status: 'available' },
-      { where: { id: petId } }
-    );
+    const updatedRows = await Pet.update({ status: 'available' }, { where: { id: petId } });
     if (updatedRows == 0) {
       throw new Error('Pet not found or not available.');
     }
