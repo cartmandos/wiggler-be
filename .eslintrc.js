@@ -26,5 +26,6 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { afterColon: true }],
     'no-multi-spaces': 'error',
+    'no-unused-vars': 'warn',
   },
 };
