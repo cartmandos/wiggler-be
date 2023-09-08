@@ -1,11 +1,13 @@
 # Pet Adoption Project
 
 Pet Adoption Project is a web application that allows users to browse and adopt pets from a database of available animals. Users can search for pets, view their details, and submit adoption requests.
+![wiggler_home-fullscreen](https://github.com/cartmandos/wiggler-be/assets/42044559/787dd1c6-48fe-43b2-8d8a-0606e70b4b94)
 
 ## Features
 
 - User registration and authentication, profile management
-- Admin/User role-based access control
+- Access Control: Admin/User role-based access control
+- Non-Admin 'me' path route for protected resources
 - Search for pets by various criteria (type, breed, status, age, etc.)
 - Browse pet details including images, description, and adoption status, etc
 - Adoption actions (adopt, foster, return)
@@ -17,11 +19,11 @@ Pet Adoption Project is a web application that allows users to browse and adopt 
 - **Server Framework**: *Express.js*
 - **Database**: *PostgreSQL*
 - **ORM**: *Sequelize*
-- **Auth**: *JWT* (cookie-based access tokens)
+- **Auth**: *JWT*, *Bcrypt*
 
-## Data Model
+## Data Schema
 
-![Data Model](./docs/data-model.png)
+![wiggler_data-schema](https://github.com/cartmandos/wiggler-be/assets/42044559/65683c35-aab1-4649-b112-fa05c5d5078f)
 
 ## Run Server
 
