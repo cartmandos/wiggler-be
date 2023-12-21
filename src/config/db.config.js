@@ -5,6 +5,8 @@ const dbPool = {
   idle: 10000,
 };
 
+const dialect = process.env.DB_DRIVER;
+
 module.exports = {
   development: {
     database: process.env.DEV_DB_NAME,
@@ -12,7 +14,8 @@ module.exports = {
     password: process.env.DEV_DB_PASSWORD,
     host: process.env.DEV_DB_HOST,
     port: process.env.DEV_DB_PORT,
-    dialect: process.env.DB_DRIVER,
+    schema: process.env.DEV_DB_SCHEMA,
+    dialect,
     dbPool,
   },
   test: {
@@ -21,7 +24,8 @@ module.exports = {
     password: process.env.CI_DB_PASSWORD,
     host: process.env.CI_DB_HOSTNAME,
     port: process.env.CI_DB_PORT,
-    dialect: process.env.DB_DRIVER,
+    schema: process.env.CI_DB_SCHEMA,
+    dialect,
     dbPool,
   },
   production: {
@@ -30,7 +34,8 @@ module.exports = {
     password: process.env.PROD_DB_PASSWORD,
     host: process.env.PROD_DB_HOSTNAME,
     port: process.env.PROD_DB_PORT,
-    dialect: process.env.DB_DRIVER,
+    schema: process.env.PROD_DB_SCHEMA,
+    dialect,
     dbPool,
   },
 };
