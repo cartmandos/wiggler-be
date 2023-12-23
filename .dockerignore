@@ -1,0 +1,10 @@
+node_modules
+.vscode
+.git
+.gitignore
+.dockerignore
+Dockerfile
+.npmrc
+.eslintrc.js
+.prettierrc.json
+README.md
