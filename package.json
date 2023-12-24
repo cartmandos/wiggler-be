@@ -1,12 +1,16 @@
 {
   "name": "wiggler-backend",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Wiggler pet adoption application back-end",
-  "main": "src/server.js",
+  "main": "./src/server.js",
   "author": "Oren Damien Shomrai <damien.shomrai@pm.me>",
-  "license": "MIT",
+  "type": "commonjs",
   "engines": {
     "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cartmandos/wiggler-be.git"
   },
   "keywords": [
     "pet adoption",
@@ -19,13 +23,9 @@
     "sequelize",
     "jwt"
   ],
-  "type": "commonjs",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cartmandos/wiggler-be.git"
-  },
+  "license": "MIT",
   "scripts": {
-    "start": "node",
+    "start": "node ./src/server.js",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.js",
@@ -53,7 +53,7 @@
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-n": "^16.5.0",
     "eslint-plugin-security": "^2.1.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1",

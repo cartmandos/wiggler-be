@@ -1,10 +1,12 @@
+# dependencies
 node_modules
+
+# dev
 .vscode
 .git
 .gitignore
 .dockerignore
-Dockerfile
-.npmrc
 .eslintrc.js
 .prettierrc.json
+Dockerfile
 README.md
