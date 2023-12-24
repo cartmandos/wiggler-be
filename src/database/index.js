@@ -1,4 +1,5 @@
 const { chalk } = require('../utils/core-helpers');
+const { DatabaseError } = require('../errors');
 
 function dbConnection(db) {
   const sequelize = db.sequelize;
@@ -23,6 +24,7 @@ function dbConnection(db) {
       }
     } catch (error) {
       console.error(chalk.red('Unable to connect database:'), error);
+      throw new DatabaseError(error);
     }
   };
 
