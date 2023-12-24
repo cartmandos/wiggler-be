@@ -17,11 +17,14 @@ const isEmailExist = async (req, res, next) => {
   const { email } = req.body;
   try {
     const user = await UserService.findOneByField('email', email);
-    if (!user) {
-      return res.status(409).send({ message: 'Authentication failed' });
+    console.log(user);
+    if (user) {
+      req.body.user = user;
+      return next();
     }
-    req.body.user = user;
-    next();
+    return res.status(401).send({
+      message: 'Login failed. Invalid email or password.',
+    });
   } catch (error) {
     next(error);
   }
