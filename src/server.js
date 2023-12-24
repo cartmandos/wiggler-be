@@ -1,27 +1,41 @@
 const app = require('./app');
 const db = require('./database/db');
-const server = require('http').createServer(app);
-const dbConnection = require('./database').createConnection(db);
-const { host, port } = require('./config');
+const { createServer } = require('node:http');
+const { createConnection } = require('./database');
+const { host, port, env } = require('./config');
 const { chalk } = require('./utils/core-helpers');
 
-server.on('listening', () => {
-  console.log(chalk.green(`[server] Server listening on ${host}:${port}`));
+const server = createServer(app);
+const dbConnection = createConnection(db);
+
+function shutdown(signal) {
+  console.info(`[${signal}] Shutting down server...`, new Date().toISOString());
+  server.close((err) => {
+    if (err) {
+      process.exitCode = 1;
+    }
+    process.exit();
+  });
+}
+
+process.on('SIGTERM', () => {
+  shutdown('SIGTERM');
 });
 
-server.on('error', (error) => {
-  console.error(chalk.red('Server error:'), error);
-  throw error;
+process.on('SIGINT', () => {
+  shutdown('SIGINT');
 });
 
 async function startServer() {
-  console.log(chalk.green('Starting server...'));
+  console.log(chalk.green(`Starting ${env} server...`));
   try {
     await dbConnection.connect();
-    server.listen(port, host);
+    server.listen(port, host, () => {
+      console.log(chalk.green(`[server] Server listening on ${host}:${port}`));
+    });
   } catch (error) {
-    console.error(error);
-    process.exitCode = 1;
+    console.error(chalk.red('Unable to start server:'), error);
+    shutdown(error.name);
   }
 }
 
