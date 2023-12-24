@@ -20,9 +20,9 @@ module.exports = {
   },
   test: {
     database: process.env.CI_DB_NAME,
-    username: process.env.CI_DB_USERNAME,
+    username: process.env.CI_DB_USER,
     password: process.env.CI_DB_PASSWORD,
-    host: process.env.CI_DB_HOSTNAME,
+    host: process.env.CI_DB_HOST,
     port: process.env.CI_DB_PORT,
     schema: process.env.CI_DB_SCHEMA,
     dialect,
@@ -30,9 +30,9 @@ module.exports = {
   },
   production: {
     database: process.env.PROD_DB_NAME,
-    username: process.env.PROD_DB_USERNAME,
+    username: process.env.PROD_DB_USER,
     password: process.env.PROD_DB_PASSWORD,
-    host: process.env.PROD_DB_HOSTNAME,
+    host: process.env.PROD_DB_HOST,
     port: process.env.PROD_DB_PORT,
     schema: process.env.PROD_DB_SCHEMA,
     dialect,
