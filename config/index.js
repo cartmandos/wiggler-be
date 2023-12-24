@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const path = require('path');
+const path = require('node:path');
 
 if (!process.env.HOST) {
   dotenv.config({

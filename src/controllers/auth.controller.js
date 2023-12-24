@@ -28,7 +28,7 @@ async function login(req, res, next) {
     const isValid = await authHelpers.comparePasswords(password, user.password);
     if (!isValid) {
       return res.status(UNAUTHORIZED).send({
-        message: 'Incorrect password or email',
+        message: 'Login failed. Invalid email or password.',
       });
     }
 

@@ -1,4 +1,5 @@
 const AppError = require('./AppError');
+const DatabaseError = require('./DatabaseError');
 
 /**
  * @param {string} message
@@ -9,4 +10,4 @@ const NotFoundError = (message, errorDetails) => {
   return new AppError(message, 404, errorDetails);
 };
 
-module.exports = { AppError, NotFoundError };
+module.exports = { AppError, DatabaseError, NotFoundError };
